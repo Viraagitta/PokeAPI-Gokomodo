@@ -15,6 +15,7 @@ export const fetchPokemons = () => {
         }
         return response.json();
       })
+
       .then((data) => {
         // console.log(data);
         dispatch(fetchPokemonSuccess(data));
