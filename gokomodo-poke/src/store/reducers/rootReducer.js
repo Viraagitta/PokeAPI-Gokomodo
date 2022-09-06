@@ -1,6 +1,6 @@
 // import { legacy_createStore as createStore } from "redux";
 import { DATA_FETCH_SUCCESS, DETAIL_POKEMON_ID } from "../actions/actiontype";
-const initialState = { pokemons: {}, detailPokemon: [] };
+const initialState = { pokemons: {}, detailPokemon: {} };
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case DATA_FETCH_SUCCESS:
