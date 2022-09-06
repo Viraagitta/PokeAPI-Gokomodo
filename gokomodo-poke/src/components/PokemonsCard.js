@@ -1,7 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDetailPokemon } from "../store/actions";
-import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Card } from "flowbite-react";
 const remy = (px) => `${px / 16}rem`;
@@ -19,13 +16,6 @@ const PokeCard = styled.div`
 `;
 function PokemonsCard({ poke, i }) {
   // console.log(poke.abilities, "<<card");
-  const dispatch = useDispatch();
-
-  const detailPokemon = useSelector((state) => state.detailPokemon);
-
-  useEffect(() => {
-    dispatch(fetchDetailPokemon(poke.name));
-  }, []);
 
   const getTypeColor = (pokeType) => {
     let background,
@@ -128,9 +118,6 @@ function PokemonsCard({ poke, i }) {
                       }  ${
                         getTypeColor(el.type.name)[1]
                       } rounded-full px-3 py-1 text-xs font-semibold mr-2 mb-2`}
-                      //   {getTypeColor(el.type.name)[0],
-                      //   getTypeColor(el.type.name)[1]
-                      // }
                     >
                       {el.type.name}
                     </span>

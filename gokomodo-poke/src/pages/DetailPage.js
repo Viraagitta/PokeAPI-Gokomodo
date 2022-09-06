@@ -1,7 +1,7 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDetailPokemon } from "../store/actions";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styled from "styled-components";
 import { Card } from "flowbite-react";
 const remy = (px) => `${px / 8}rem`;
@@ -108,7 +108,7 @@ function DetailPage() {
   };
   // console.log(getTypeColor("dragon")[1]);
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row mt-40 mx-auto">
       <PokeCard>
         <Card>
           <div className="rounded overflow-hidden shadow-lg ">
@@ -169,7 +169,7 @@ function DetailPage() {
                 <div className="pl-6 pb-2 text-sm font-bold text-left">
                   {detailPokemon.abilities?.map((el) => {
                     return (
-                      <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
+                      <span className="inline-block bg-rose-300 rounded-full px-3 py-1 text-xs font-semibold text-gray-700 mr-2 mb-2">
                         {el.ability.name}
                       </span>
                     );
