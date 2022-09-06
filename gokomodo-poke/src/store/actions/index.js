@@ -6,13 +6,23 @@ export const fetchPokemonSuccess = (payload) => {
     payload,
   };
 };
-export const fetchPokemons = () => {
+
+export const fetchPokemonForPageSuccess = (payload) => {
+  return {
+    type: DATA_FETCH_SUCCESS,
+    payload,
+  };
+};
+export const fetchPokemons = (page) => {
   return async (dispatch, getState) => {
     try {
-      const data = await fetch(
+      let data = await fetch(
         "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
       );
-
+      console.log(page, "page");
+      if (page) {
+        data = await fetch(page);
+      }
       const result = await data.json();
 
       let pokemon = result.results.map(async (el) => {
@@ -23,7 +33,14 @@ export const fetchPokemons = () => {
       });
       // console.log(await Promise.all(pokemon), "<<testing");
       const final = await Promise.all(pokemon);
-      dispatch(fetchPokemonSuccess(final));
+      dispatch(
+        fetchPokemonSuccess({
+          final,
+          nextPage: result.next,
+          prevPage: result.previous,
+          totalPage: result.count,
+        })
+      );
     } catch (error) {
       console.error(error);
     }
