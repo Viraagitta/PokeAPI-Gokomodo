@@ -7,19 +7,13 @@ export const fetchPokemonSuccess = (payload) => {
   };
 };
 
-export const fetchPokemonForPageSuccess = (payload) => {
-  return {
-    type: DATA_FETCH_SUCCESS,
-    payload,
-  };
-};
 export const fetchPokemons = (page) => {
   return async (dispatch, getState) => {
     try {
       let data = await fetch(
         "https://pokeapi.co/api/v2/pokemon?limit=40&offset=0"
       );
-      console.log(page, "page");
+      // console.log(page, "page");
       if (page) {
         data = await fetch(page);
       }
@@ -55,6 +49,7 @@ export const fetchDetailPokemonSuccess = (payload) => {
 };
 
 export const fetchDetailPokemon = (id) => {
+  console.log(id);
   return (dispatch, getState) => {
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`, {
       method: "GET",

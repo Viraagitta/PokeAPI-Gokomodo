@@ -2,6 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 // import DetailPage from "./pages/DetailPage";
 import HomePage from "./pages/HomePage";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
-        {/* <Route path="/:id" element={<DetailPage />} /> */}
+        <Route path="/:id" element={<DetailPage />} />
       </Routes>
       {/* <FooterUser /> */}
     </div>

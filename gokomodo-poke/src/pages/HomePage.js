@@ -8,12 +8,6 @@ import { fetchDetailPokemon, fetchPokemons } from "../store/actions";
 export default function HomePage() {
   const dispatch = useDispatch();
   let pokemons = useSelector((state) => state.pokemons);
-  // const detailPokemon = useSelector((state) => state.detailPokemon);
-  // const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   setLoading(false);
-  //   dispatch(fetchPokemons());
-  // }, []);
 
   const [next, setNext] = useState();
   const [prev, setPrev] = useState();
@@ -30,7 +24,7 @@ export default function HomePage() {
     dispatch(fetchPokemons());
   }, []);
 
-  console.log(pokemons.nextPage, " >>");
+  // console.log(pokemons.nextPage, " >>");
   return (
     <>
       <Pagination pokemons={pokemons} />
@@ -45,6 +39,7 @@ export default function HomePage() {
           </div>
         </div>
       </div>
+      <Pagination pokemons={pokemons} />
     </>
   );
 }
